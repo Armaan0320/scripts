@@ -1,0 +1,30 @@
+# Environment & secrets
+.env
+.env.*
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+
+# Logs
+logs/
+*.log
+
+# Cache / temp
+.cache/
+
+# Data / ML artifacts
+data/
+outputs/
+*.pt
+*.pth
+*.ckpt
+*.h5
+
+# Editor / OS
+.DS_Store
+.vscode/
