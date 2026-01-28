@@ -4,6 +4,8 @@ from openai import OpenAI
 import os
 import re
 from flask_cors import CORS
+from threading import Thread
+import requests
 
 load_dotenv()
 app = Flask(__name__)
@@ -11,8 +13,23 @@ app = Flask(__name__)
 CORS(app, supports_credentials=True, origins=["*"])
 openai_key = os.getenv("api_key")
 client = OpenAI(api_key=openai_key)
+callback = os.getenv("callback_url")
+token = '65bc09cf-1b86-4cdc-b796-30ad1f59e73a'
 
 
+
+def send_callback(data, url = callback):
+    """Send results back to callback endpoint."""
+    try:
+        headers = {
+            "Content-Type": "application/json",
+            "X-AUTH-TOKEN": token
+        }
+        resp = requests.post(url, json=data, headers=headers, timeout=10)
+        print("resp:", resp.text)
+        print(f"[CALLBACK] Sent ({resp.status_code})")
+    except Exception as e:
+        print(f"[CALLBACK ERROR] {e}")
 
 CONTENT_TYPE_RULES = {
     "ted talk": """Structure: Strong hook → Personal story → Big idea → Evidence → Call-to-action.
@@ -235,23 +252,8 @@ def parse_response(raw_text):
         'data': segments
     }
 
-
-
-@app.route('/generate', methods=['POST'])
-def generate_script():
-    data = request.get_json()
-    print("Received data:", data)
-
-    topic = data.get('topic')
-    content_type = data.get('content_type')
-    language = data.get('language')
-    duration = data.get('duration')
-    unit = data.get('unit')
-    tones = data.get('tones') or []
-    if not isinstance(tones, list):
-        tones = [tones]
+def process_script(request_id, topic, content_type, tones, language, duration, unit):
     prompt = generate_prompt(topic, content_type, tones, language, duration, unit)
-
     try:
         response = client.chat.completions.create(
             model="gpt-4o",
@@ -259,12 +261,49 @@ def generate_script():
                 {"role": "system", "content": "You are a helpful script-writing assistant."},
                 {"role": "user", "content": prompt}
             ]
-            )
+        )
+
         raw_output = response.choices[0].message.content.strip()
         parsed_output = parse_response(raw_output)
-        print(parsed_output)
 
-        return jsonify(parsed_output)
+        print("Generated script:", parsed_output)
+
+        parsed_output = parse_response(raw_output)
+
+        final_payload = {
+            "request_id": request_id,
+            "response": parsed_output
+        }
+
+        send_callback(final_payload)
+
+    except Exception as e:
+        print("Error in process_script:", str(e))
+        send_callback({'error': str(e)}, callback)
+
+
+@app.route('/generate', methods=['POST'])
+def generate_script():
+    try:
+        data = request.get_json()
+        print("Received data:", data)
+        request_id = data.get('request_id')
+        topic = data.get('topic')
+        content_type = data.get('content_type')
+        language = data.get('language')
+        duration = data.get('duration')
+        unit = data.get('unit')
+        tones = data.get('tones') or []
+        if not isinstance(tones, list):
+            tones = [tones]
+
+        if not all([request_id, topic, content_type, language, duration, unit]):
+            return jsonify({'error': 'Missing required parameters.'}), 400
+
+        Thread(target=process_script,
+        args=(request_id, topic, content_type, tones, language, duration, unit)
+        ).start()
+        return jsonify({'status': 'Processing started.'}), 200
 
     except Exception as e:
         return jsonify({'error': str(e)}), 400
