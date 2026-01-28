@@ -1,0 +1,131 @@
+{
+  "CONTENT_TYPE_RULES": {
+    "ted_talk": {
+      "structure": ["Strong hook","Personal story","Big idea","Evidence","Call-to-action"],
+      "language_style": "Inspiring, semi-formal, personal yet intellectual",
+      "pacing": "Moderate to slightly slow for emphasis",
+      "vocabulary": "Mix of simple terms with occasional advanced vocabulary",
+      "transitions": "Smooth and logical, connect personal anecdotes to larger themes",
+      "delivery_notes": "Emphasize key points with pauses, vary tone for emotion",
+      "special_elements": ["Personal story at start","Idea worth spreading moment","Memorable closing"],
+      "prohibited": ["Overly technical jargon without explanation","Flat monotone delivery"]
+    },
+
+    "podcast": {
+      "structure": ["Warm introduction","Topic discussion","Tangents","Closing summary"],
+      "language_style": "Conversational, relatable, natural flow",
+      "pacing": "Relaxed, occasional pauses for thought",
+      "vocabulary": "Everyday words, occasional slang, idiomatic expressions",
+      "transitions": "Informal phrases like 'so anyway', 'let's shift gears'",
+      "delivery_notes": "Include natural filler words sparingly for realism",
+      "special_elements": ["Host-listener connection","Occasional personal anecdotes"],
+      "prohibited": ["Script-like rigid sentences","Excessive data dumping"]
+    },
+
+    "speech": {
+      "structure": ["Introduction","Body (2-3 main points)","Conclusion"],
+      "language_style": "Formal, polished, confident",
+      "pacing": "Moderate with clear enunciation",
+      "vocabulary": "Standard professional vocabulary, avoid slang",
+      "transitions": "Clear signposting (First, Second, Lastly)",
+      "delivery_notes": "Use rhetorical devices like repetition, triads, metaphors",
+      "special_elements": ["Memorable closing line","Audience-inclusive statements"],
+      "prohibited": ["Rambling","Overly complex sentences"]
+    },
+
+    "presentation": {
+      "structure": ["Opening greeting","Overview","Key points","Conclusion"],
+      "language_style": "Semi-formal, clear, instructional",
+      "pacing": "Moderate, matching imaginary slides",
+      "vocabulary": "Clear terms, explain industry jargon",
+      "transitions": "As you can see…, Next, we'll look at…",
+      "delivery_notes": "Assume visual aids, emphasize clarity",
+      "special_elements": ["Summaries after each main section"],
+      "prohibited": ["Overcrowding segments with too many ideas"]
+    },
+
+    "skit": {
+      "structure": ["Scene setup","Conflict","Resolution or punchline"],
+      "language_style": "Natural dialogue for each character",
+      "pacing": "Snappy for comedic timing, varied for drama",
+      "vocabulary": "Everyday words fitting character personality",
+      "transitions": "Scene changes or character reactions",
+      "delivery_notes": "Distinct voices for each character",
+      "special_elements": ["Humor","Irony","Exaggerated personalities"],
+      "prohibited": ["Monotonous exchanges without conflict"]
+    },
+
+    "debate": {
+      "structure": ["Opening statement","Rebuttals","Closing arguments"],
+      "language_style": "Persuasive, formal",
+      "pacing": "Deliberate but firm",
+      "vocabulary": "Logical, evidence-backed phrasing",
+      "transitions": "My opponent claims… however…",
+      "delivery_notes": "Alternate speakers, respectful but assertive tone",
+      "special_elements": ["Evidence","Counter-arguments"],
+      "prohibited": ["Personal attacks","Emotional overreactions"]
+    },
+
+    "standup_comedy": {
+      "structure": ["Opening joke","Observational humor","Callback","Strong closer"],
+      "language_style": "Humorous, sarcastic, personal",
+      "pacing": "Varied, pause before punchlines",
+      "vocabulary": "Informal, slang acceptable",
+      "transitions": "Flow naturally between topics",
+      "delivery_notes": "Emphasize punchline with pauses",
+      "special_elements": ["Relatable humor","Callbacks"],
+      "prohibited": ["Excessively offensive jokes unless intended"]
+    },
+
+    "narration": {
+      "structure": ["Exposition","Rising action","Climax","Resolution"],
+      "language_style": "Descriptive, immersive, vivid",
+      "pacing": "Moderate with variation for tension",
+      "vocabulary": "Rich descriptive, sensory words",
+      "transitions": "Scene-based time/location shifts",
+      "delivery_notes": "Paint mental pictures, use pacing for mood",
+      "special_elements": ["Sensory imagery","Foreshadowing"],
+      "prohibited": ["Monotone factual delivery"]
+    },
+
+    "interview": {
+      "structure": ["Guest introduction","Questions","Follow-ups","Closing remarks"],
+      "language_style": "Conversational, respectful",
+      "pacing": "Varied based on guest responses",
+      "vocabulary": "Clear, direct questions",
+      "transitions": "Speaking of that…, Can you elaborate?",
+      "delivery_notes": "Distinct voices for interviewer and guest",
+      "special_elements": ["Personal guest stories","Natural banter"],
+      "prohibited": ["Overly scripted robotic exchanges"]
+    },
+
+    "monologue": {
+      "structure": ["Opening hook","Exploration of thought","Closing insight"],
+      "language_style": "Personal, introspective",
+      "pacing": "Steady, thoughtful",
+      "vocabulary": "Everyday words with metaphors",
+      "transitions": "Smooth thought progression",
+      "delivery_notes": "Expressive tone with emotional depth",
+      "special_elements": ["Internal conflict","Self-reflection"],
+      "prohibited": ["Abrupt topic jumps without connection"]
+    }
+  },
+
+  "CONTENT_TONE_RULES": {
+    "conversational": "Informal, friendly language. Use contractions, relatable examples, occasional humor. Avoid technical jargon.",
+    "professional": "Formal, concise, polished delivery. Avoid slang. Use precise vocabulary and direct statements.",
+    "inspirational": "Uplifting language, success stories, motivational calls to action. Use positive adjectives and strong verbs.",
+    "informative": "Fact-driven, structured explanations. Use data, examples and analogies.",
+    "humorous": "Playful tone, witty remarks, exaggerations, use comedic timing and callbacks.",
+    "dramatic": "High emotional stakes, strong adjectives, dynamic pacing, Use pacing for tension.",
+    "persuasive": "Logical arguments with emotional appeal, rhetorical questions and strong calls to action.",
+    "casual": "Relaxed, everyday language with light humor and no rigid structure.",
+    "serious": "Straightforward, factual, No jokes or lightness. Strong steady delivery.",
+    "empathetic": "Compassionate, understanding tone validating audience emotions and feelings.",
+    "sarcastic": "Ironic, exaggerated statements. Humor with a sharp edge.",
+    "storytelling": "Narrative-driven with vivid imagery and clear arc(beginning, middle and end).",
+    "energetic": "High-paced, enthusiastic word choice. Excited delivery.",
+    "neutral": "Balanced tone, factual, Avoid emotionally biased tone.",
+    "authoritative": "Confident statements, commanding tone. Speak with certainty."
+  }
+}
