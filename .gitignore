@@ -9,7 +9,7 @@ __pycache__/
 *.pyc
 *.pyo
 venv/
-openapi_exp.ipynb
+openapi_esp.ipynb
 
 # Logs
 logs/
