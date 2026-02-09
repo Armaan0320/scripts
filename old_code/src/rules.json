@@ -1,5 +1,31 @@
 {
   "CONTENT_TYPE_RULES": {
+    "video": {
+      "structure": [
+        "Hook in first 5-7 seconds",
+        "Context & promise of value",
+        "Core content blocks",
+        "Pattern breaks & engagement moments",
+        "Strong takeaway or CTA"
+      ],
+      "language_style": "Direct, engaging, clear and audience-focused. Spoken-first, not essay-like.",
+      "pacing": "Fast at the start, steady in the middle, slightly slower at key points for emphasis.",
+      "vocabulary": "Simple, conversational words with topic-specific terms explained naturally.",
+      "transitions": "Verbal signposts like 'now here's the thing', 'let me show you', 'this is important'.",
+      "delivery_notes": "Assume a camera and a single speaker. Use rhetorical questions and emphasis for retention.",
+      "special_elements": [
+        "Strong opening hook",
+        "Audience engagement prompts",
+        "Clear value delivery",
+        "Retention-aware pacing"
+      ],
+      "prohibited": [
+        "Long intros",
+        "Slow starts",
+        "Academic or essay-style writing",
+        "Overly monotone delivery"
+      ]
+    },
     "ted_talk": {
       "structure": ["Strong hook","Personal story","Big idea","Evidence","Call-to-action"],
       "language_style": "Inspiring, semi-formal, personal yet intellectual",

@@ -6,6 +6,7 @@ import re
 from flask_cors import CORS
 from threading import Thread
 import requests
+import json
 
 load_dotenv()
 app = Flask(__name__)
@@ -14,9 +15,10 @@ CORS(app, supports_credentials=True, origins=["*"])
 openai_key = os.getenv("api_key")
 client = OpenAI(api_key=openai_key)
 callback = os.getenv("callback_url")
-token = '65bc09cf-1b86-4cdc-b796-30ad1f59e73a'
+token = os.getenv("token")
 
-
+with open("src/rules.json", "r", encoding="utf-8") as f:
+    content_rules = json.load(f)
 
 def send_callback(data, url = callback):
     """Send results back to callback endpoint."""
@@ -137,12 +139,22 @@ def parse_response(raw_text):
         'summary': summary,
         'data': segments
     }
+00.
 
 def process_script(request_id, topic, content_type, tones, language, duration, unit):
-    prompt = generate_prompt(topic, content_type, tones, language, duration, unit)
+    tone_rules_combined = ""
+    for tone in tones:
+        if tone in content_rules['TONE_RULES']:
+            tone_rules_combined += content_rules['TONE_RULES'][tone] + " "
+    if content_type in content_rules['CONTENT_TYPE_RULES']:
+        content_type_rule = content_rules['CONTENT_TYPE_RULES'][content_type]
+    else:
+        content_type_rule = content_type
+    
+    prompt = generate_prompt(topic, content_type, tones, language, duration, unit, content_type_rule, tone_rules_combined)
     try:
         response = client.chat.completions.create(
-            model="gpt-4o",
+            model="gpt-5.2",
             messages=[
                 {"role": "system", "content": "You are a helpful script-writing assistant."},
                 {"role": "user", "content": prompt}
